@@ -16,5 +16,5 @@ public interface PointRepository extends JpaRepository<Point, Long> {
     void delete(String name);
 
     @Query("SELECT p FROM Point p WHERE SQRT(POWER(p.x - ?1, 2) + POWER(p.y - ?2, 2)) <= ?3")
-    List<Point> findPossiblePoints(int x,int y, int radius);
+    List<Point> findPossiblePoints(int x ,int y, int radius);
 }
