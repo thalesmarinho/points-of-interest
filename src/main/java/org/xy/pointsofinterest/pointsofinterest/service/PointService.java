@@ -39,4 +39,8 @@ public class PointService {
 
         pointRepository.save(point);
     }
+
+    public List<Point> findPossiblePoints(int x, int y, int radius) {
+        return pointRepository.findPossiblePoints(x, y, radius);
+    }
 }

@@ -22,6 +22,13 @@ public class PointController {
         return ResponseEntity.ok(pointService.findAll());
     }
 
+    @GetMapping("/near")
+    public ResponseEntity<List<Point>> findAll(@RequestParam(value="x") int x,
+                                               @RequestParam(value="y") int y,
+                                               @RequestParam(value="radius") int radius) {
+        return ResponseEntity.ok(pointService.findPossiblePoints(x, y, radius));
+    }
+
     @PostMapping
     public ResponseEntity<Point> save(@RequestBody @Valid Point point) {
         return new ResponseEntity<>(pointService.save(point), HttpStatus.CREATED);

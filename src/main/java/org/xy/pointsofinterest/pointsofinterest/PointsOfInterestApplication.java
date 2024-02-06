@@ -9,5 +9,4 @@ public class PointsOfInterestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PointsOfInterestApplication.class, args);
 	}
-
 }
