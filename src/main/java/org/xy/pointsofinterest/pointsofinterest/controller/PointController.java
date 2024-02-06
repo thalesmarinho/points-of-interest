@@ -23,7 +23,7 @@ public class PointController {
     }
 
     @GetMapping("/near")
-    public ResponseEntity<List<Point>> findAll(@RequestParam(value="x") int x,
+    public ResponseEntity<List<Point>> findNear(@RequestParam(value="x") int x,
                                                @RequestParam(value="y") int y,
                                                @RequestParam(value="radius") int radius) {
         return ResponseEntity.ok(pointService.findPossiblePoints(x, y, radius));
