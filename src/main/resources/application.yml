@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:pois
+    url: jdbc:h2:mem:points
     username: root
     password: root
     driverClassName: org.h2.Driver
