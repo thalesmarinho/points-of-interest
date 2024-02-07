@@ -2,11 +2,13 @@ package org.xy.pointsofinterest.pointsofinterest.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "point")
+@Builder
 public class Point {
 
     @Id
