@@ -7,6 +7,7 @@ import org.xy.pointsofinterest.pointsofinterest.exception.PointNotFoundException
 import org.xy.pointsofinterest.pointsofinterest.repository.PointRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -21,12 +22,21 @@ public class PointService {
     public List<Point> findByName(String name) {
         return pointRepository.findByName(name);
     }
+
+    public Optional<Point> findById(long id) {
+        return pointRepository.findById(id);
+    }
+
     public Point save(Point point) {
         return pointRepository.save(point);
     }
 
     public void delete(String name) {
         pointRepository.delete(name);
+    }
+
+    public void deleteById(long id) {
+        pointRepository.deleteById(id);
     }
 
     public void replace(Point point) {
