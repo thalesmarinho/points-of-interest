@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.xy.pointsofinterest.pointsofinterest.entity.Point;
 import org.xy.pointsofinterest.pointsofinterest.exception.PointNotFoundException;
+import org.xy.pointsofinterest.pointsofinterest.mapper.PointMapper;
 import org.xy.pointsofinterest.pointsofinterest.repository.PointRepository;
+import org.xy.pointsofinterest.pointsofinterest.request.PointPutRequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,13 +41,14 @@ public class PointService {
         pointRepository.deleteById(id);
     }
 
-    public void replace(Point point) {
-        List<Point> pointsByName = findByName(point.getName());
+    public void replace(PointPutRequestBody requestBody) {
+        Optional<Point> savedPoint = findById(requestBody.getId());
 
-        if(pointsByName.isEmpty())
+        if(savedPoint.isEmpty())
             throw new PointNotFoundException("Point not found");
 
-        point.setId(pointsByName.get(0).getId());
+        Point point = PointMapper.INSTANCE.toPoint(requestBody);
+        point.setId(savedPoint.get().getId());
 
         pointRepository.save(point);
     }
