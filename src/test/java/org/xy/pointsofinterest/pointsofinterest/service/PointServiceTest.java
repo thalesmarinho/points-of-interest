@@ -10,6 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.xy.pointsofinterest.pointsofinterest.entity.Point;
 import org.xy.pointsofinterest.pointsofinterest.repository.PointRepository;
 import org.xy.pointsofinterest.pointsofinterest.util.PointCreator;
+import org.xy.pointsofinterest.pointsofinterest.util.PointPutRequestBodyCreator;
 
 import java.util.List;
 import java.util.Optional;
@@ -108,7 +109,7 @@ class PointServiceTest {
 
     @Test
     void replace() {
-        assertThatCode(() -> pointService.replace(PointCreator.createPointToBeSaved()))
+        assertThatCode(() -> pointService.replace(PointPutRequestBodyCreator.createRequestBody()))
                 .doesNotThrowAnyException();
     }
 
